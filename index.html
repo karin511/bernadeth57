@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scientific Number Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+            margin-top: 20px;
+        }
+        input, button {
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .menu {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        .menu a {
+            text-decoration: none;
+            color: white;
+            background-color: #ff9d00;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(107, 0, 0, 0.945);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        .modal button {
+            margin-top: 10px;
+            padding: 5px 10px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <nav class="menu">
+        <a href="#">File</a>
+        <a href="#">Edit</a>
+        <a href="#">Run</a>
+        <a href="#" onclick="showAboutUs()">About Us</a>
+    </nav>
+    <div class="container">
+        <h2>Scientific Number Checker</h2>
+        <input type="text" id="numberInput" placeholder="Enter a number">
+        <button onclick="checkNumber()">Check</button>
+        <p id="message"></p>
+    </div>
+
+    <div class="modal" id="aboutModal">
+        <p><strong>Bernadeth Karin Simarmata</strong></p>
+        <p>NIM: 231011060057</p>
+        <button onclick="closeAboutUs()">Close</button>
+    </div>
+
+    <script>
+        function checkNumber() {
+            const input = document.getElementById('numberInput').value.trim();
+            const scientificNumberPattern = /^-?\d+(\.\d+)?(e[+-]?\d+)?$/i;
+            const message = document.getElementById('message');
+            
+            if (scientificNumberPattern.test(input)) {
+                message.textContent = "Yes, it is a number";
+                message.style.color = "green";
+            } else {
+                message.textContent = "No, it is not a number";
+                message.style.color = "red";
+            }
+        }
+        
+        function showAboutUs() {
+            document.getElementById('aboutModal').style.display = 'block';
+        }
+        
+        function closeAboutUs() {
+            document.getElementById('aboutModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
+        
